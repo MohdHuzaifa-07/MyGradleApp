@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        jdk 'JDK17'
+        jdk 'JDK'
     }
 
     stages {
@@ -14,9 +14,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Fix Gradle cache issue (Java 21 vs 17 conflict)
                 sh 'rm -rf ~/.gradle/caches/'
-                
                 sh 'chmod +x gradlew'
                 sh './gradlew build --no-daemon'
             }
