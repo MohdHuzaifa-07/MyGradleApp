@@ -4,26 +4,20 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/MohdHuzaifa-07/MyGradleApp.git'
+                git branch: 'master', url: 'https://github.com/MohdHuzaifa-07/MyGradleApp.git'
             }
         }
 
         stage('Build') {
             steps {
                 sh 'chmod +x gradlew'
-                sh './gradlew clean build'
+                sh './gradlew build --no-daemon'
             }
         }
 
         stage('Test') {
             steps {
-                sh './gradlew test'
-            }
-        }
-
-        stage('Run Application') {
-            steps {
-                sh 'java -jar build/libs/*.jar || true'
+                sh './gradlew test --no-daemon'
             }
         }
     }
