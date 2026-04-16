@@ -13,5 +13,12 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
+// Custom task
+task display {
+    doLast {
+        println "Hello!! Bit Students"
+    }
+}
+
 // Main class
 mainClassName = 'App'
